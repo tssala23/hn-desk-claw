@@ -1,0 +1,6 @@
+schemaVersion: 1
+agent:
+  tools:
+    allow: [read, write, exec]
+    fs:
+      workspaceOnly: true

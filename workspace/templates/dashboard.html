@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HN Desk — Front Page</title>
+<style>
+  /* Colours come from the dashboard host's theme variables (light and dark mode),
+     so text always contrasts with its box. Only the HN orange is fixed. */
+  :root { --hn-orange:#ff6600; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--surface, #f6f6ef); color:var(--text, #1b1b18); font:15px/1.45 var(--font-body, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif); }
+  header { background:var(--hn-orange); color:#fff; padding:18px 24px; display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; }
+  header h1 { margin:0; font-size:22px; letter-spacing:.2px; color:#fff; }
+  header .stamp { font-size:13px; opacity:.9; }
+  .overview { margin:20px 24px 8px; padding:14px 18px; background:var(--card, #fff); color:var(--text, #1b1b18); border:1px solid var(--border, #e4e4da); border-left:4px solid var(--hn-orange); border-radius:6px; }
+  .overview b { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted, #6b6b63); margin-bottom:4px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:14px; padding:12px 24px 24px; }
+  .card { background:var(--card, #fff); color:var(--text, #1b1b18); border:1px solid var(--border, #e4e4da); border-radius:8px; padding:14px 16px; display:flex; gap:12px; }
+  .rank { flex:none; width:30px; height:30px; border-radius:50%; background:var(--hn-orange); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .body { min-width:0; }
+  .title { font-weight:600; color:var(--text-strong, #111); text-decoration:none; }
+  .title:hover { text-decoration:underline; }
+  .domain { color:var(--muted, #6b6b63); font-size:12px; margin-left:4px; }
+  .takeaway { margin:6px 0; color:var(--text, #33332e); }
+  .meta { font-size:12px; color:var(--muted, #6b6b63); display:flex; gap:12px; flex-wrap:wrap; }
+  .meta a { color:var(--muted, #6b6b63); }
+  footer { padding:0 24px 20px; font-size:12px; color:var(--muted, #6b6b63); }
+</style>
+</head>
+<body>
+<header>
+  <h1>HN Desk — Front Page</h1>
+  <span class="stamp">Updated {{generated}}</span>
+</header>
+<section class="overview"><b>Today's themes</b>{{overview}}</section>
+<main class="grid">
+<!--card-->
+  <article class="card">
+    <div class="rank">{{rank}}</div>
+    <div class="body">
+      <a class="title" href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a><span class="domain">{{domain}}</span>
+      <p class="takeaway">{{takeaway}}</p>
+      <div class="meta"><span>▲ {{points}} points</span><span>💬 {{comments}} comments</span><span>by {{author}}</span><a href="{{hn_url}}" target="_blank" rel="noopener noreferrer">discuss</a></div>
+    </div>
+  </article>
+<!--/card-->
+</main>
+<footer>Stories, links and numbers from the Hacker News API. Themes and takeaways written by HN Desk.</footer>
+</body>
+</html>
